@@ -1,4 +1,4 @@
-# Flatiron School Module 3 Final Project
+# Improvements on Detecting Abnormal Deliveries
 
 Team Member 1: Larry Chew
 
