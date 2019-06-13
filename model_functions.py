@@ -12,28 +12,32 @@ import itertools
 
 
 def get_scores(y_train, y_train_hat, y_test, y_test_hat):
-    """Prints the recall and hamming-loss scores for the training and testing data"""
+    """Prints the recall and hamming-loss scores for
+       the training and testing data"""
     rec_train = recall_score(y_train, y_train_hat)
     rec_test = recall_score(y_test, y_test_hat)
     hamming_train = hamming_loss(y_train, y_train_hat)
     hamming_test = hamming_loss(y_test, y_test_hat)
 
-    print(f"Training Recall: {rec_train}")
-    print(f"Testing Recall: {rec_test}")
-    print(f"Training Hamming-Loss: {hamming_train}")
-    print(f"Testing Hamming-Loss: {hamming_test}")
+    print(f"""
+            Training Recall: {rec_train} \n
+            Testing Recall: {rec_test} \n
+            Training Hamming-Loss: {hamming_train} \n
+            Testing Hamming-Loss: {hamming_test}""")
 
 
 def get_auc_scores(clf, X_train_full, X_test_full, y_train, y_test):
-    """Prints the AUC scores for training and testing data and returns testing score"""
+    """Prints the AUC scores for training and testing data
+       and returns testing score"""
     y_train_score = clf.predict_proba(X_train_full)[:, 1]
     y_test_score = clf.predict_proba(X_test_full)[:, 1]
 
     auc_train = roc_auc_score(y_train, y_train_score)
     auc_test = roc_auc_score(y_test, y_test_score)
 
-    print(f"Training AUC: {auc_train}")
-    print(f"Testing AUC: {auc_test}")
+    print(f"""
+            Training AUC: {auc_train}
+            Testing AUC: {auc_test}""")
     return y_test_score
 
 
@@ -55,6 +59,7 @@ def plot_roc_curve(y_test, y_test_score):
 
 
 def show_cm(y_true, y_pred, class_names=None, model_name=None):
+    """Show confusion matrix"""
     cf = confusion_matrix(y_true, y_pred)
     plt.imshow(cf, cmap=plt.cm.Blues)
 
